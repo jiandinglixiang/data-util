@@ -1,0 +1,1 @@
+// Vue.directive('clipboard', clipboard)
