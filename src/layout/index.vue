@@ -40,11 +40,6 @@ export default {
         mobile: this.device === 'mobile'
       }
     }
-  },
-  methods: {
-    handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
-    }
   }
 }
 </script>

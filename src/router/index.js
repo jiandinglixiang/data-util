@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 /* Layout */
 import Layout from '@/layout'
+import EmptyLayout from '@/components/EmptyLayout/EmptyLayout'
 
 Vue.use(Router)
 
@@ -37,7 +38,6 @@ export const constantRoutes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
   {
     path: '/404',
     component: () => import('@/views/404'),
@@ -52,126 +52,116 @@ export const constantRoutes = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/dashboard/index'),
+        component: () => import('@/views/dashboard/dashboard'),
         meta: { title: '仪表盘', icon: 'dashboard' }
       }
     ]
   },
-
   {
-    path: '/example',
+    path: '/user-portrait',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help', breadcrumb: false },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
+    redirect: '/user-portrait/index',
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'UserPortrait',
+        component: () => import('@/views/user-portrait/user-portrait'),
+        meta: { title: '用户画像', icon: 'el-icon-user' }
       }
     ]
   },
-
   {
-    path: '/nested',
+    path: '/rfm/health-monitoring',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
+    redirect: '/rfm/health-monitoring/index',
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
+        path: 'index',
+        name: 'HealthMonitoring',
+        component() {
+          return import('@/views/rfm-health-monitoring/rfm-health-monitoring')
+        },
+        meta: { title: 'RFM健康监控', icon: 'el-icon-video-camera-solid' }
       }
     ]
   },
-
+  {
+    path: '/user-analyze',
+    component: Layout,
+    meta: { title: '用户分析', icon: 'el-icon-data-analysis' },
+    children: [
+      {
+        path: 'add-user',
+        name: 'addUser',
+        component: () => import('@/views/user-analyze/add-user'),
+        meta: { title: '新增用户', icon: 'el-icon-finished' }
+      },
+      {
+        path: 'active-analyze',
+        component: EmptyLayout,
+        meta: {
+          title: '活跃分析',
+          icon: 'el-icon-s-data',
+          disabledBreadcrumb: true
+        },
+        children: [
+          {
+            path: 'core-indicators',
+            name: 'coreIndicators',
+            component: () =>
+              import('@/views/user-analyze/active-analyze/core-indicators'),
+            meta: { title: '关键指标', icon: 'el-icon-s-data' }
+          },
+          {
+            path: 'active-constitute',
+            name: 'activeConstitute',
+            component: () =>
+              import('@/views/user-analyze/active-analyze/active-constitute'),
+            meta: { title: '活跃构成', icon: 'el-icon-s-data' }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: '/user-lose-monitoring',
+    component: Layout,
+    redirect: '/user-lose-monitoring/index',
+    children: [
+      {
+        path: 'index',
+        name: 'userLoseMonitoring',
+        component: () =>
+          import('@/views/user-lose-monitoring/user-lose-monitoring'),
+        meta: { title: '流失监控', icon: 'el-icon-video-camera-solid' }
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+function sortRoutes(arr) {
+  arr.sort(function(item, item2) {
+    // 排序
+    let title = item?.meta?.title
+    let title2 = item2?.meta?.title
+    if (item.children?.length > 1) {
+      sortRoutes(item.children)
+      if (!title) {
+        title = item.children?.[0]?.meta?.title
+      }
+    }
+    if (item2.children?.length > 1) {
+      sortRoutes(item2.children)
+      if (!title2) {
+        title2 = item2.children?.[0]?.meta?.title
+      }
+    }
+    return title < title2 ? 1 : 0
+  })
+}
+sortRoutes(constantRoutes)
 
 const createRouter = () =>
   new Router({

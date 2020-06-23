@@ -54,6 +54,20 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  watch: {
+    'sidebar.opened'(val, old) {
+      // 手动触发resize 使图表自动改变
+      //手动触发窗口resize事件
+      if (val === old) {
+        return
+      }
+      setTimeout(function() {
+        const event = document.createEvent('HTMLEvents')
+        event.initEvent('resize', true, true)
+        window.dispatchEvent(event)
+      }, 0)
+    }
   }
 }
 </script>

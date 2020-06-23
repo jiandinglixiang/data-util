@@ -16,21 +16,6 @@ label {
   font-weight: 700;
 }
 
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
-#app {
-  height: 100%;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
 a:focus,
 a:active {
   outline: none;
@@ -58,8 +43,9 @@ div:focus {
     height: 0;
   }
 }
-
-// main-container global css
-.app-container {
-  padding: 20px;
+.page-container {
+  max-height: calc(100vh - 50px);
+}
+.el-header {
+  padding-top: 20px;
 }

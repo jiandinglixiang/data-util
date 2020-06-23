@@ -16,7 +16,6 @@ test-deploy:
   when: manual
   script:
     - /bin/bash /opt/deploy/backend-ui/deploy-test.sh
-    - curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=2a8d801c-9101-4648-8f46-558c6d19eab8' -H 'Content-Type:application/json'  -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"本次更新由：$GITLAB_USER_NAME 触发\\n>项目名称：$CI_PROJECT_NAME\\n>提交sha：$CI_COMMIT_SHA\\n>提交日志：\\n$CI_COMMIT_MESSAGE\\n>构建分支：$CI_COMMIT_REF_NAME\\n>项目地址：$CI_PROJECT_URL\\n>流水线地址：[$CI_JOB_URL]\",\"mentioned_list\":[\"@all\"]}}"
 
 dev-deploy:
   stage: deploy
@@ -47,7 +46,6 @@ tw-test-deploy:
   when: manual
   script:
     - /bin/bash /opt/deploy/backend-ui/deploy-test.sh
-    - curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=2a8d801c-9101-4648-8f46-558c6d19eab8' -H 'Content-Type:application/json'  -d "{\"msgtype\":\"text\",\"text\":{\"content\":\"本次更新由：$GITLAB_USER_NAME 触发\\n>项目名称：测试台湾-$CI_PROJECT_NAME\\n>提交sha：$CI_COMMIT_SHA\\n>提交日志：\\n$CI_COMMIT_MESSAGE\\n>构建分支：$CI_COMMIT_REF_NAME\\n>项目地址：$CI_PROJECT_URL\\n>流水线地址：[$CI_JOB_URL]\",\"mentioned_list\":[\"@all\"]}}"
 
 tw-dev-deploy:
   stage: deploy

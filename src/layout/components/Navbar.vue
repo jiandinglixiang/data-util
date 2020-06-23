@@ -7,28 +7,7 @@
     />
 
     <breadcrumb class="breadcrumb-container" />
-
     <div class="right-menu">
-      <el-form :inline="true" :model="formModel">
-        <el-form-item label="地区">
-          <el-select v-model="formModel.region" placeholder="活动区域">
-            <el-option label="国内" value="shanghai" />
-            <el-option label="国外" value="beijing" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="项目">
-          <el-select v-model="formModel.region" placeholder="活动区域">
-            <el-option label="区域一" value="shanghai" />
-            <el-option label="区域二" value="beijing" />
-          </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary">
-            查询
-          </el-button>
-        </el-form-item>
-      </el-form>
-
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
@@ -46,11 +25,35 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    <el-form :inline="true" label-width="50" class="status-form">
+      <el-form-item label="地区">
+        <el-select
+          :value="region"
+          placeholder="选择地区"
+          @change="onChange('region', $event)"
+        >
+          <el-option label="国内" value="mainlan" />
+          <el-option label="国外" value="overseas" />
+        </el-select>
+      </el-form-item>
+      <el-form-item label="项目">
+        <el-select
+          :value="project"
+          placeholder="选择项目"
+          @change="onChange('project', $event)"
+        >
+          <el-option label="快应用" value="quickapp" />
+          <el-option label="繁体版" value="app_tw" />
+          <el-option label="英文版" value="app_en" />
+          <el-option label="越南版" value="app_vn" />
+        </el-select>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
@@ -59,18 +62,17 @@ export default {
     Breadcrumb,
     Hamburger
   },
-  data() {
-    return {
-      formModel: {
-        user: '',
-        region: ''
-      }
-    }
-  },
   computed: {
+    ...mapState({
+      project: stats => stats.project.project,
+      region: stats => stats.project.region
+    }),
     ...mapGetters(['sidebar', 'avatar'])
   },
   methods: {
+    onChange(key, value) {
+      this.$store.commit('project/CHANGE_PROJECT_TARGET', { [key]: value })
+    },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
@@ -111,7 +113,11 @@ export default {
   .breadcrumb-container {
     float: left;
   }
-
+  .status-form {
+    float: right;
+    height: 100%;
+    line-height: 50px;
+  }
   .right-menu {
     float: right;
     height: 100%;

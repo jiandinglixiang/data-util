@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import 'minireset.css/minireset.sass' // A modern alternative to CSS resets
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -15,7 +15,7 @@ import '@/directive/index' // 全局指令
 import VueClipboard from 'vue-clipboard2'
 
 Vue.use(VueClipboard)
-Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
+Vue.use(ElementUI, { size: 'mini', zIndex: 3000 })
 
 Vue.config.productionTip = false
 
