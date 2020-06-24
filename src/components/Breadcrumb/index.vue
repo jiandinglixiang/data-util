@@ -47,19 +47,21 @@ export default {
         ? [{ path: '/dashboard', meta: { title: '仪表盘' } }]
         : []
 
-      this.levelList = matched.reduce((arr, item, index) => {
-        if (index) {
-          const redirect = matched?.[index - 1]?.redirect ?? 'noRedirect'
+      this.levelList = matched.reduce((arr, item) => {
+        if (item.meta.breadcrumb === false) {
+          return arr
+        }
+
+        const len = arr.length
+        item = { ...item }
+
+        if (len) {
+          const redirect = arr[len - 1]?.redirect ?? 'noRedirect'
           if (redirect === item.path) {
-            arr[arr.length - 1].redirect = 'noRedirect'
+            arr[len - 1].redirect = 'noRedirect'
           }
         }
-
-        if (item.meta.breadcrumb !== false) {
-          // 过滤
-          arr.push(item)
-        }
-
+        arr.push(item)
         return arr
       }, pathArr)
     },
