@@ -4,10 +4,7 @@
       <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
         <span
           v-if="
-            index === levelList.length - 1 ||
-              !item.parent ||
-              item.redirect === 'noRedirect' ||
-              (item.meta && item.meta.disabledBreadcrumb)
+            item.redirect === 'noRedirect' || index === levelList.length - 1
           "
           class="no-redirect"
         >
@@ -43,20 +40,28 @@ export default {
   methods: {
     getBreadcrumb() {
       // only show routes with meta.title
-      let matched = this.$route.matched.filter(
+      const matched = [...this.$route.matched].filter(
         item => item.meta && item.meta.title
       )
-      const first = matched[0]
+      const pathArr = !this.isDashboard(matched[0])
+        ? [{ path: '/dashboard', meta: { title: '仪表盘' } }]
+        : []
 
-      if (!this.isDashboard(first)) {
-        matched = [
-          { path: '/dashboard', parent: true, meta: { title: '仪表盘' } }
-        ].concat(matched)
-      }
+      this.levelList = matched.reduce((arr, item, index) => {
+        if (index) {
+          const redirect = matched?.[index - 1]?.redirect ?? 'noRedirect'
+          if (redirect === item.path) {
+            arr[arr.length - 1].redirect = 'noRedirect'
+          }
+        }
 
-      this.levelList = matched.filter(
-        item => item.meta && item.meta.title && item.meta.breadcrumb !== false
-      )
+        if (item.meta.breadcrumb !== false) {
+          // 过滤
+          arr.push(item)
+        }
+
+        return arr
+      }, pathArr)
     },
     isDashboard(route) {
       const name = route && route.name

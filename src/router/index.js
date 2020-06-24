@@ -82,6 +82,15 @@ export const constantRoutes = [
           return import('@/views/rfm-health-monitoring/rfm-health-monitoring')
         },
         meta: { title: 'RFM健康监控', icon: 'el-icon-video-camera-solid' }
+      },
+      {
+        hidden: true,
+        path: 'days-detail',
+        name: 'DaysDetail',
+        component() {
+          return import('@/views/rfm-health-monitoring/days-detail')
+        },
+        meta: { title: '每日明细', icon: 'el-icon-video-camera-solid' }
       }
     ]
   },
@@ -89,6 +98,7 @@ export const constantRoutes = [
     path: '/user-analyze',
     component: Layout,
     meta: { title: '用户分析', icon: 'el-icon-data-analysis' },
+    redirect: '/user-analyze/add-user',
     children: [
       {
         path: 'add-user',
@@ -104,6 +114,7 @@ export const constantRoutes = [
           icon: 'el-icon-s-data',
           disabledBreadcrumb: true
         },
+        redirect: '/user-analyze/active-analyze/core-indicators',
         children: [
           {
             path: 'core-indicators',

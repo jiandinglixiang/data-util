@@ -44,14 +44,18 @@
       </h3>
       <ul class="line-table-container">
         <li style="border: 1px solid #ddd;">
-          <el-divider>
-            <p style="text-align: center">
-              重要价值0
-              <br />
-              转入295|转出115
-              <el-link type="primary">每日明细</el-link>
+          <div class="line-table-item-header">
+            <b>重要价值0</b>
+            <p>
+              转入295 | 转出115
+              <el-link
+                type="primary"
+                @click="$router.push({ name: 'DaysDetail' })"
+              >
+                每日明细
+              </el-link>
             </p>
-          </el-divider>
+          </div>
           <ve-line
             height="250px"
             :data="chartData"
@@ -70,14 +74,13 @@
           </el-table>
         </li>
         <li v-for="n in 11" :key="n" style="border: 1px solid #ddd">
-          <el-divider>
-            <p style="text-align: center">
-              重要价值{{ n }}
-              <br />
-              转入295|转出115
+          <div class="line-table-item-header">
+            <b>重要价值{{ n }}</b>
+            <p>
+              转入295 | 转出115
               <el-link type="primary">每日明细</el-link>
             </p>
-          </el-divider>
+          </div>
           <ve-line
             height="250px"
             :data="chartData"
@@ -227,6 +230,11 @@ export default {
     margin-right: 0;
   }
 }
+.line-table-item-header {
+  text-align: center;
+  padding: 10px 0;
+}
+
 .top-container {
   display: flex;
   flex-flow: row nowrap;
