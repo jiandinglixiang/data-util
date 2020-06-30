@@ -107,6 +107,12 @@ export const constantRoutes = [
         meta: { title: '新增用户', icon: 'el-icon-finished' }
       },
       {
+        path: 'leave-analyze',
+        name: 'leaveAnalyze',
+        component: () => import('@/views/user-analyze/leave-analyze'),
+        meta: { title: '留存分析', icon: 'el-icon-tickets' }
+      },
+      {
         path: 'active-analyze',
         component: EmptyLayout,
         meta: {
@@ -121,14 +127,14 @@ export const constantRoutes = [
             name: 'coreIndicators',
             component: () =>
               import('@/views/user-analyze/active-analyze/core-indicators'),
-            meta: { title: '关键指标', icon: 'el-icon-s-data' }
+            meta: { title: '关键指标', icon: 'el-icon-pie-chart' }
           },
           {
             path: 'active-constitute',
             name: 'activeConstitute',
             component: () =>
               import('@/views/user-analyze/active-analyze/active-constitute'),
-            meta: { title: '活跃构成', icon: 'el-icon-s-data' }
+            meta: { title: '活跃构成', icon: 'el-icon-s-order' }
           }
         ]
       }
@@ -145,6 +151,19 @@ export const constantRoutes = [
         component: () =>
           import('@/views/user-lose-monitoring/user-lose-monitoring'),
         meta: { title: '流失监控', icon: 'el-icon-video-camera-solid' }
+      }
+    ]
+  },
+  {
+    path: '/page-analyze',
+    component: Layout,
+    redirect: '/page-analyze/index',
+    children: [
+      {
+        path: 'index',
+        name: 'pageAnalyze',
+        component: () => import('@/views/page-analyze/page-analyze'),
+        meta: { title: '页面分析', icon: 'el-icon-data-line' }
       }
     ]
   },

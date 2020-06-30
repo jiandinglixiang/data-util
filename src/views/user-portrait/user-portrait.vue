@@ -292,6 +292,9 @@ export default {
 }
 .select-region {
   margin-bottom: 30px;
+  b {
+    padding-right: 12px;
+  }
 }
 ::v-deep .el-form-item {
   margin-bottom: 0;

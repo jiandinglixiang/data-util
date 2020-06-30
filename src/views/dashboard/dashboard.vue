@@ -216,6 +216,12 @@ export default {
 }
 
 .list-item {
+  border-radius: 4px;
+  border: 1px solid #e6ebf5;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: 0.3s;
+
   min-width: 150px;
   min-height: 150px;
   flex: 0 0 15.6%;
@@ -225,16 +231,17 @@ export default {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ddd;
-  text-align: center;
   padding: 10px;
-
+  /*user-select: none;*/
+  /*cursor: pointer;*/
   b {
     font-size: 2em;
     margin: 10px 0;
   }
 }
-
+.list-item:hover {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+}
 .go-up {
   color: red;
 
