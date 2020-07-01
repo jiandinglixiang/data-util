@@ -20,7 +20,7 @@
             </el-dropdown-item>
           </router-link>
           <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">退出登录</span>
+            <span style="display: block;">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -91,19 +91,19 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
-    line-height: 46px;
-    height: 100%;
-    float: left;
     cursor: pointer;
-    transition: background 0.3s;
+    float: left;
+    height: 100%;
+    line-height: 46px;
     -webkit-tap-highlight-color: transparent;
+    transition: background 0.3s;
 
     &:hover {
       background: rgba(0, 0, 0, 0.025);
@@ -113,11 +113,13 @@ export default {
   .breadcrumb-container {
     float: left;
   }
+
   .status-form {
     float: right;
     height: 100%;
     line-height: 50px;
   }
+
   .right-menu {
     float: right;
     height: 100%;
@@ -128,11 +130,11 @@ export default {
     }
 
     .right-menu-item {
-      display: inline-block;
-      padding: 0 8px;
-      height: 100%;
-      font-size: 18px;
       color: #5a5e66;
+      display: inline-block;
+      font-size: 18px;
+      height: 100%;
+      padding: 0 8px;
       vertical-align: text-bottom;
 
       &.hover-effect {
@@ -153,23 +155,24 @@ export default {
         position: relative;
 
         .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
           border-radius: 10px;
+          cursor: pointer;
+          height: 40px;
+          width: 40px;
         }
 
         .el-icon-caret-bottom {
           cursor: pointer;
+          font-size: 12px;
           position: absolute;
           right: -20px;
           top: 25px;
-          font-size: 12px;
         }
       }
     }
   }
 }
+
 ::v-deep .el-form--inline .el-form-item__content {
   vertical-align: middle;
 }

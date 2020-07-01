@@ -7,11 +7,11 @@
         class="sidebar-logo-link"
         to="/"
       >
-        <img v-if="logo" :src="logo" class="sidebar-logo" />
+        <img v-if="logo" :src="logo" class="sidebar-logo" alt="" />
         <h1 v-else class="sidebar-title">{{ title }}</h1>
       </router-link>
       <router-link v-else key="expand" class="sidebar-logo-link" to="/">
-        <img v-if="logo" :src="logo" class="sidebar-logo" />
+        <img v-if="logo" :src="logo" class="sidebar-logo" alt="" />
         <h1 class="sidebar-title">{{ title }}</h1>
       </router-link>
     </transition>
@@ -48,40 +48,40 @@ export default {
 }
 
 .sidebar-logo-container {
-  position: relative;
-  width: 100%;
+  background: #2b2f3a;
   height: 50px;
   line-height: 50px;
-  background: #2b2f3a;
-  text-align: center;
   overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
 
   & .sidebar-logo-link {
     height: 100%;
     width: 100%;
 
     & .sidebar-logo {
-      width: 32px;
       height: 32px;
-      vertical-align: middle;
       margin-right: 12px;
+      vertical-align: middle;
+      width: 32px;
     }
 
     & .sidebar-title {
-      display: inline-block;
-      margin: 0;
       color: #fff;
+      display: inline-block;
+      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+      font-size: 14px;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
-      font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+      margin: 0;
       vertical-align: middle;
     }
   }
 
   &.collapse {
     .sidebar-logo {
-      margin-right: 0px;
+      margin-right: 0;
     }
   }
 }

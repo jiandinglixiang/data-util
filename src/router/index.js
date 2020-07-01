@@ -191,6 +191,7 @@ function sortRoutes(arr) {
     return title < title2 ? 1 : 0
   })
 }
+
 sortRoutes(constantRoutes)
 
 const createRouter = () =>

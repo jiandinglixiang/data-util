@@ -57,23 +57,23 @@
             </p>
           </div>
           <ve-line
-            height="250px"
             :data="chartData"
-            :settings="status.settings"
             :grid="status.grid"
+            :settings="status.settings"
+            height="250px"
           />
-          <el-table :data="tableData" border style="width: 100%">
-            <el-table-column prop="date" label="周期" width="100" />
-            <el-table-column prop="name" label="活跃" width="80" />
-            <el-table-column prop="name" label="付费率" width="80" />
-            <el-table-column prop="name" label="人均单量" width="80" />
-            <el-table-column prop="name" label="arpu" width="80" />
-            <el-table-column prop="name" label="arppu" width="80" />
-            <el-table-column prop="address" label="平均阅读时长" width="250" />
-            <el-table-column prop="name" label="启动" width="80" />
+          <el-table :data="tableData" border style="width: 100%;">
+            <el-table-column label="周期" prop="date" width="100" />
+            <el-table-column label="活跃" prop="name" width="80" />
+            <el-table-column label="付费率" prop="name" width="80" />
+            <el-table-column label="人均单量" prop="name" width="80" />
+            <el-table-column label="arpu" prop="name" width="80" />
+            <el-table-column label="arppu" prop="name" width="80" />
+            <el-table-column label="平均阅读时长" prop="address" width="250" />
+            <el-table-column label="启动" prop="name" width="80" />
           </el-table>
         </li>
-        <li v-for="n in 11" :key="n" style="border: 1px solid #ddd">
+        <li v-for="n in 11" :key="n" style="border: 1px solid #ddd;">
           <div class="line-table-item-header">
             <b>重要价值{{ n }}</b>
             <p>
@@ -82,21 +82,21 @@
             </p>
           </div>
           <ve-line
-            height="250px"
             :data="chartData"
-            :settings="status.settings"
-            :grid="status.grid"
             :data-empty="true"
+            :grid="status.grid"
+            :settings="status.settings"
+            height="250px"
           />
-          <el-table :data="tableData" style="width: 100%">
-            <el-table-column prop="date" label="周期" width="100" />
-            <el-table-column prop="name" label="活跃" width="80" />
-            <el-table-column prop="name" label="付费率" width="80" />
-            <el-table-column prop="name" label="人均单量" width="80" />
-            <el-table-column prop="name" label="arpu" width="80" />
-            <el-table-column prop="name" label="arppu" width="80" />
-            <el-table-column prop="address" label="平均阅读时长" width="250" />
-            <el-table-column prop="name" label="启动" width="80" />
+          <el-table :data="tableData" style="width: 100%;">
+            <el-table-column label="周期" prop="date" width="100" />
+            <el-table-column label="活跃" prop="name" width="80" />
+            <el-table-column label="付费率" prop="name" width="80" />
+            <el-table-column label="人均单量" prop="name" width="80" />
+            <el-table-column label="arpu" prop="name" width="80" />
+            <el-table-column label="arppu" prop="name" width="80" />
+            <el-table-column label="平均阅读时长" prop="address" width="250" />
+            <el-table-column label="启动" prop="name" width="80" />
           </el-table>
         </li>
       </ul>
@@ -213,124 +213,141 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .line-table-container {
+  align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
   justify-content: flex-start;
+
   > li {
-    width: 49.5%;
     flex: 0 0 49.5%;
-    margin-right: 0.5%;
     margin-bottom: 1%;
+    margin-right: 0.5%;
+    width: 49.5%;
   }
+
   > li:nth-child(2n + 0) {
     margin-left: 0.5%;
     margin-right: 0;
   }
 }
+
 .line-table-item-header {
-  text-align: center;
   padding: 10px 0;
+  text-align: center;
 }
 
 .top-container {
   display: flex;
   flex-flow: row nowrap;
+
   > ul {
-    width: 50%;
-    flex: 0 0 50%;
     display: flex;
+    flex: 0 0 50%;
     flex-flow: row wrap;
     justify-content: flex-start;
+    width: 50%;
   }
 }
+
 .right-grade {
-  width: 49.5%;
-  flex: 0 0 49.5%;
-  margin-left: 0.5%;
-  display: flex;
-  flex-flow: column nowrap;
   align-items: center;
+  display: flex;
+  flex: 0 0 49.5%;
+  flex-flow: column nowrap;
   justify-content: center;
+  margin-left: 0.5%;
+  width: 49.5%;
+
   > div {
-    width: 100%;
     flex: 0 1 50%;
     margin-bottom: 1%;
+    width: 100%;
   }
 
   h5 {
-    margin-bottom: 5px;
     font-size: 14px;
     line-height: 20px;
+    margin-bottom: 5px;
   }
 }
+
 .simple-table {
-  display: flex;
-  flex-flow: row wrap;
   border: 1px solid #ebeef5;
   border-right: 0;
-  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
   font-size: 14px;
+  text-align: center;
+
   p:nth-last-child(1n + 4) {
-    width: 0;
-    flex: 0 0 33.3%;
     background-color: #f5f7fa;
     border-bottom: 1px solid #ebeef5;
     border-right: 1px solid #ebeef5;
-    padding: 5px;
-  }
-  p:nth-child(1n + 4) {
-    width: 0;
     flex: 0 0 33.3%;
-    border-right: 1px solid #ebeef5;
     padding: 5px;
+    width: 0;
+  }
+
+  p:nth-child(1n + 4) {
+    border-right: 1px solid #ebeef5;
+    flex: 0 0 33.3%;
+    padding: 5px;
+    width: 0;
   }
 }
+
 .left-proportion-item {
-  min-width: 140px;
-  min-height: 140px;
-  padding: 1%;
-  flex: 0 0 24%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  text-align: center;
-  display: flex;
-  flex-flow: column nowrap;
   align-items: center;
-  justify-content: center;
   border: 1px solid #ccc;
+  display: flex;
+  flex: 0 0 24%;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-bottom: 1%;
+  margin-right: 1%;
+  min-height: 140px;
+  min-width: 140px;
+  padding: 1%;
+  text-align: center;
+
   b {
     font-size: 1.5em;
     margin: 10px;
   }
+
   p {
     font-size: 13px;
   }
 }
+
 .block-title {
-  margin: 10px 0;
   border-left: 3px solid #409eff;
-  text-indent: 0.5em;
+  margin: 10px 0;
   position: relative;
+  text-indent: 0.5em;
 }
+
 .fixed-icon-tips {
+  color: #409eff;
   position: absolute;
   right: 0;
   top: 0;
-  color: #409eff;
 }
+
 .go-up {
   color: red;
-  &:after {
+
+  &::after {
     content: '↑';
   }
 }
 
 .go-down {
   color: green;
-  &:after {
+
+  &::after {
     content: '↓';
   }
 }

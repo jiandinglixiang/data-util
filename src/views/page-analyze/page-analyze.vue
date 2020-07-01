@@ -15,21 +15,21 @@
         <el-form-item label="起止日期">
           <el-date-picker
             v-model="formInline.value2"
-            type="daterange"
+            :picker-options="pickerOptions"
             align="right"
-            unlink-panels
+            end-placeholder="结束日期"
             range-separator="至"
             start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :picker-options="pickerOptions"
+            type="daterange"
+            unlink-panels
           />
         </el-form-item>
       </el-form>
       <el-popover
-        title="说明"
-        width="200"
-        trigger="hover"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget."
+        title="说明"
+        trigger="hover"
+        width="200"
       >
         <span slot="reference" class="fixed-icon-tips">
           说明
@@ -39,9 +39,9 @@
     </el-header>
     <el-main>
       <ve-sankey
-        height="calc(100vh - 150px)"
         :data="chartData"
         :settings="chartSettings"
+        height="calc(100vh - 150px)"
       />
     </el-main>
   </el-container>
@@ -81,6 +81,37 @@ export default {
           { 页面: '内容页b-1', 访问量: 60000 },
           { 页面: '内容页b-2', 访问量: 20000 }
         ]
+      },
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+              picker.$emit('pick', [start, end])
+            }
+          },
+          {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date()
+              const start = new Date()
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+              picker.$emit('pick', [start, end])
+            }
+          }
+        ]
       }
     }
   }
@@ -89,9 +120,9 @@ export default {
 
 <style scoped>
 .fixed-icon-tips {
+  color: #409eff;
   position: absolute;
   right: 20px;
   top: 20px;
-  color: #409eff;
 }
 </style>

@@ -4,8 +4,8 @@
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
-      class="login-form"
       auto-complete="on"
+      class="login-form"
       label-position="left"
     >
       <div class="title-container">
@@ -19,11 +19,11 @@
         <el-input
           ref="username"
           v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
           auto-complete="on"
+          name="username"
+          placeholder="Username"
+          tabindex="1"
+          type="text"
         />
       </el-form-item>
 
@@ -36,10 +36,10 @@
           ref="password"
           v-model="loginForm.password"
           :type="passwordType"
-          placeholder="Password"
-          name="password"
-          tabindex="2"
           auto-complete="on"
+          name="password"
+          placeholder="Password"
+          tabindex="2"
           @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click="showPwd">
@@ -51,9 +51,9 @@
 
       <el-button
         :loading="loading"
-        type="primary"
         size="medium"
-        style="width:100%;margin-bottom:30px;"
+        style="width: 100%; margin-bottom: 30px;"
+        type="primary"
         @click.native.prevent="handleLogin"
       >
         登录
@@ -123,6 +123,7 @@ export default {
 
 <style lang="scss">
 /* 修复input 背景不协调 和光标变色 */
+
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg: #283443;
@@ -143,25 +144,25 @@ $cursor: #fff;
     width: 85%;
 
     input {
-      background: transparent;
-      border: 0px;
       -webkit-appearance: none;
-      border-radius: 0px;
-      padding: 12px 5px 12px 15px;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      caret-color: $cursor;
       color: $light_gray;
       height: 47px;
-      caret-color: $cursor;
+      padding: 12px 5px 12px 15px;
 
       &:-webkit-autofill {
-        box-shadow: 0 0 0px 1000px $bg inset !important;
+        box-shadow: 0 0 0 1000px $bg inset !important;
         -webkit-text-fill-color: $cursor !important;
       }
     }
   }
 
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     color: #454545;
   }
@@ -174,23 +175,23 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 
 .login-container {
-  min-height: 100%;
-  width: 100%;
   background-color: $bg;
+  min-height: 100%;
   overflow: hidden;
+  width: 100%;
 
   .login-form {
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 160px 35px 0;
     position: relative;
     width: 520px;
-    max-width: 100%;
-    padding: 160px 35px 0;
-    margin: 0 auto;
-    overflow: hidden;
   }
 
   .tips {
-    font-size: 14px;
     color: #fff;
+    font-size: 14px;
     margin-bottom: 10px;
 
     span {
@@ -201,32 +202,32 @@ $light_gray: #eee;
   }
 
   .svg-container {
-    padding: 6px 5px 6px 15px;
     color: $dark_gray;
+    display: inline-block;
+    padding: 6px 5px 6px 15px;
     vertical-align: middle;
     width: 30px;
-    display: inline-block;
   }
 
   .title-container {
     position: relative;
 
     .title {
-      font-size: 26px;
       color: $light_gray;
-      margin: 0px auto 40px auto;
-      text-align: center;
+      font-size: 26px;
       font-weight: bold;
+      margin: 0 auto 40px auto;
+      text-align: center;
     }
   }
 
   .show-pwd {
+    color: $dark_gray;
+    cursor: pointer;
+    font-size: 16px;
     position: absolute;
     right: 10px;
     top: 7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
     user-select: none;
   }
 }

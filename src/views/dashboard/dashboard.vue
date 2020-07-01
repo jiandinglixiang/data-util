@@ -4,10 +4,10 @@
       <h3 class="block-title">
         <span>本月增长</span>
         <el-popover
-          title="说明"
-          width="200"
-          trigger="hover"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget."
+          title="说明"
+          trigger="hover"
+          width="200"
         >
           <span slot="reference" class="fixed-icon-tips">
             说明
@@ -195,18 +195,18 @@ export default {
 
 <style lang="scss" scoped>
 .block-title {
-  margin: 10px 0;
   border-left: 3px solid #409eff;
-  text-indent: 0.5em;
+  margin: 10px 0;
   position: relative;
+  text-indent: 0.5em;
 }
 
 .fixed-icon-tips {
+  bottom: 0;
+  color: #409eff;
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 0;
-  color: #409eff;
 }
 
 .list-container {
@@ -216,36 +216,39 @@ export default {
 }
 
 .list-item {
-  border-radius: 4px;
+  align-items: center;
+  background-color: #fff;
   border: 1px solid #e6ebf5;
-  background-color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  flex: 0 0 15.6%;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-bottom: 1%;
+  margin-right: 1%;
+  min-height: 150px;
+  min-width: 150px;
   overflow: hidden;
+  padding: 10px;
   transition: 0.3s;
 
-  min-width: 150px;
-  min-height: 150px;
-  flex: 0 0 15.6%;
-  margin-right: 1%;
-  margin-bottom: 1%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  /*user-select: none;*/
-  /*cursor: pointer;*/
+  /* user-select: none; */
+
+  /* cursor: pointer; */
   b {
     font-size: 2em;
     margin: 10px 0;
   }
 }
+
 .list-item:hover {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
+
 .go-up {
   color: red;
 
-  &:after {
+  &::after {
     content: '↑';
     vertical-align: top;
   }
@@ -254,7 +257,7 @@ export default {
 .go-down {
   color: green;
 
-  &:after {
+  &::after {
     content: '↓';
     vertical-align: top;
   }

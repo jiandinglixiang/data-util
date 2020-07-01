@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
+import { AppMain, Navbar, Sidebar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -50,31 +50,34 @@ export default {
 
 .app-wrapper {
   @include clearfix;
-  position: relative;
+
   height: 100%;
+  position: relative;
   width: 100%;
+
   &.mobile.openSidebar {
     position: fixed;
     top: 0;
   }
 }
+
 .drawer-bg {
   background: #000;
-  opacity: 0.3;
-  width: 100%;
-  top: 0;
   height: 100%;
+  opacity: 0.3;
   position: absolute;
+  top: 0;
+  width: 100%;
   z-index: 999;
 }
 
 .fixed-header {
   position: fixed;
-  top: 0;
   right: 0;
-  z-index: 9;
-  width: calc(100% - #{$sideBarWidth});
+  top: 0;
   transition: width 0.28s;
+  width: calc(100% - #{$sideBarWidth});
+  z-index: 9;
 }
 
 .hideSidebar .fixed-header {

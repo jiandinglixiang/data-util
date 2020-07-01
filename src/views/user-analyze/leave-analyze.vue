@@ -1,6 +1,6 @@
 <template>
   <el-container class="page-container">
-    <el-header height="auto" style="position: relative">
+    <el-header height="auto" style="position: relative;">
       <el-form :inline="true" :model="formInline">
         <el-form-item label="分群">
           <el-select v-model="formInline.value" placeholder="请选择">
@@ -47,20 +47,20 @@
         <el-form-item label="起止日期">
           <el-date-picker
             v-model="formInline.value2"
-            type="daterange"
             align="right"
-            unlink-panels
+            end-placeholder="结束日期"
             range-separator="至"
             start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            type="daterange"
+            unlink-panels
           />
         </el-form-item>
       </el-form>
       <el-popover
-        title="说明"
-        width="200"
-        trigger="hover"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget."
+        title="说明"
+        trigger="hover"
+        width="200"
       >
         <span slot="reference" class="fixed-icon-tips">
           说明
@@ -70,12 +70,12 @@
     </el-header>
     <el-main>
       <el-table
-        class="custom-table"
+        :cell-style="cellStyle"
         :data="tableData"
         border
-        :cell-style="cellStyle"
+        class="custom-table"
       >
-        <el-table-column prop="name" label="每日留存率">
+        <el-table-column label="每日留存率" prop="name">
           <div slot-scope="{ row, $index }" class="row-cell-first">
             <b :style="$index <= 2 ? 'color: #409eff;' : ''">
               {{ row.name }}{{ $index }}
@@ -83,13 +83,13 @@
             <p class="user-sum-txt">{{ row.sum }}</p>
           </div>
         </el-table-column>
-        <el-table-column prop="0" label="0" align="center" />
-        <el-table-column prop="1" label="1" align="center" />
-        <el-table-column prop="2" label="2" align="center" />
-        <el-table-column prop="3" label="3" align="center" />
-        <el-table-column prop="4" label="4" align="center" />
-        <el-table-column prop="5" label="5" align="center" />
-        <el-table-column prop="6" label="6" align="center" />
+        <el-table-column align="center" label="0" prop="0" />
+        <el-table-column align="center" label="1" prop="1" />
+        <el-table-column align="center" label="2" prop="2" />
+        <el-table-column align="center" label="3" prop="3" />
+        <el-table-column align="center" label="4" prop="4" />
+        <el-table-column align="center" label="5" prop="5" />
+        <el-table-column align="center" label="6" prop="6" />
       </el-table>
     </el-main>
   </el-container>
@@ -138,16 +138,18 @@ export default {
 
 <style scoped>
 .custom-table {
-  width: 100%;
   max-height: calc(100vh - 163px);
+  width: 100%;
 }
+
 .row-cell-first {
-  /*line-height: 1.2;*/
+  /* line-height: 1.2; */
 }
+
 .fixed-icon-tips {
+  color: #409eff;
   position: absolute;
   right: 20px;
   top: 20px;
-  color: #409eff;
 }
 </style>

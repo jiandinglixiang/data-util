@@ -15,50 +15,50 @@
         <el-form-item label="起止日期">
           <el-date-picker
             v-model="formInline.value2"
-            type="daterange"
+            :picker-options="pickerOptions"
             align="right"
-            unlink-panels
+            end-placeholder="结束日期"
             range-separator="至"
             start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            :picker-options="pickerOptions"
+            type="daterange"
+            unlink-panels
           />
         </el-form-item>
       </el-form>
     </el-header>
     <el-main>
       <ve-line
-        height="250px"
         :data="chartData"
-        :settings="status.settings"
         :grid="status.grid"
+        :settings="status.settings"
+        height="250px"
       />
       <el-table
         :data="[...tableData, ...tableData]"
         border
-        style="width: 100%;"
         height="calc(100vh - 467px)"
+        style="width: 100%;"
       >
-        <el-table-column prop="date" label="周期" width="100" />
-        <el-table-column prop="name" label="活跃" width="80" />
-        <el-table-column prop="name" label="付费率" width="80" />
-        <el-table-column prop="name" label="人均单量" width="80" />
-        <el-table-column prop="name" label="arpu" width="80" />
-        <el-table-column prop="name" label="arppu" width="80" />
-        <el-table-column prop="address" label="平均阅读时长" />
-        <el-table-column prop="name" label="启动" width="80" />
+        <el-table-column label="周期" prop="date" width="100" />
+        <el-table-column label="活跃" prop="name" width="80" />
+        <el-table-column label="付费率" prop="name" width="80" />
+        <el-table-column label="人均单量" prop="name" width="80" />
+        <el-table-column label="arpu" prop="name" width="80" />
+        <el-table-column label="arppu" prop="name" width="80" />
+        <el-table-column label="平均阅读时长" prop="address" />
+        <el-table-column label="启动" prop="name" width="80" />
       </el-table>
     </el-main>
     <el-footer>
       <el-divider content-position="right">
         <el-pagination
           :current-page="currentPage"
-          :page-sizes="[100, 200, 300, 400]"
           :page-size="100"
-          layout="total, sizes, prev, pager, next, jumper"
+          :page-sizes="[100, 200, 300, 400]"
           :total="400"
-          @size-change="handleSizeChange"
+          layout="total, sizes, prev, pager, next, jumper"
           @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
         />
       </el-divider>
     </el-footer>

@@ -17,10 +17,10 @@
       </div>
       <div class="pie-container">
         <ve-pie
-          height="230px"
           :legend-visible="false"
           :series="series"
           :title="title"
+          height="230px"
         />
       </div>
       <div class="select-region">
@@ -36,31 +36,31 @@
       </div>
       <h3 class="block-title">活跃时段趋势</h3>
       <ve-line
-        height="250px"
         :data="chartData"
-        :settings="status.settings"
         :grid="status.grid"
+        :settings="status.settings"
+        height="250px"
       />
       <h3 class="block-title">充值人数趋势</h3>
       <ve-line
-        height="250px"
         :data="chartData"
-        :settings="status.settings"
         :grid="status.grid"
+        :settings="status.settings"
+        height="250px"
       />
       <h3 class="block-title">消耗人数趋势</h3>
       <ve-line
-        height="250px"
         :data="chartData"
-        :settings="status.settings"
         :grid="status.grid"
+        :settings="status.settings"
+        height="250px"
       />
       <h3 class="block-title">书币/书券存量趋势</h3>
       <ve-line
-        height="250px"
         :data="chartData"
-        :settings="status.settings"
         :grid="status.grid"
+        :settings="status.settings"
+        height="250px"
       />
     </el-main>
   </el-container>
@@ -276,26 +276,30 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .block-title {
-  margin: 10px 0;
   border-left: 3px solid #409eff;
+  margin: 10px 0;
   text-indent: 0.5em;
 }
+
 .pie-container {
-  min-width: 863px;
-  min-height: 230px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  min-height: 230px;
+  min-width: 863px;
 }
+
 .select-region {
   margin-bottom: 30px;
+
   b {
     padding-right: 12px;
   }
 }
+
 ::v-deep .el-form-item {
   margin-bottom: 0;
 }

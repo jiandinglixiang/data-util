@@ -1,20 +1,20 @@
 <template>
   <el-container class="page-container">
     <el-header height="auto">
-      <el-dialog title="最近任务" :visible.sync="dialogTableVisible">
+      <el-dialog :visible.sync="dialogTableVisible" title="最近任务">
         <el-table :data="tableData" border>
-          <el-table-column property="date" label="日期" width="150" />
-          <el-table-column property="name" label="姓名" width="200" />
-          <el-table-column property="address" label="地址" />
+          <el-table-column label="日期" property="date" width="150" />
+          <el-table-column label="姓名" property="name" width="200" />
+          <el-table-column label="地址" property="address" />
         </el-table>
       </el-dialog>
-      <el-row type="flex" justify="space-between">
+      <el-row justify="space-between" type="flex">
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
           <el-form-item label="沉默天数大于等于:">
-            <el-input-number v-model="formInline.region" :min="1" :max="10" />
+            <el-input-number v-model="formInline.region" :max="10" :min="1" />
           </el-form-item>
           <el-form-item label="充值金额大于等于:">
-            <el-input-number v-model="formInline.region" :min="1" :max="10" />
+            <el-input-number v-model="formInline.region" :max="10" :min="1" />
           </el-form-item>
           <el-form-item>
             <el-radio-group v-model="formInline.region">
@@ -59,31 +59,31 @@
             tableData
           )
         "
+        border
         height="calc(100vh - 245px)"
         style="width: 100%;"
-        border
       >
-        <el-table-column prop="date" label="用户" width="100" />
-        <el-table-column prop="name" label="注册时间" width="80" />
-        <el-table-column prop="name" label="沉默天数" width="80" />
-        <el-table-column prop="name" label="充值金额" width="80" />
-        <el-table-column prop="name" label="邮箱" width="80" />
-        <el-table-column prop="name" label="手机" width="80" />
-        <el-table-column prop="address" label="IDFA" />
-        <el-table-column prop="name" label="AAID" width="80" />
-        <el-table-column prop="name" label="回归状态" width="80" />
+        <el-table-column label="用户" prop="date" width="100" />
+        <el-table-column label="注册时间" prop="name" width="80" />
+        <el-table-column label="沉默天数" prop="name" width="80" />
+        <el-table-column label="充值金额" prop="name" width="80" />
+        <el-table-column label="邮箱" prop="name" width="80" />
+        <el-table-column label="手机" prop="name" width="80" />
+        <el-table-column label="IDFA" prop="address" />
+        <el-table-column label="AAID" prop="name" width="80" />
+        <el-table-column label="回归状态" prop="name" width="80" />
       </el-table>
     </el-main>
     <el-footer>
       <el-divider content-position="right">
         <el-pagination
           :current-page="currentPage"
-          :page-sizes="[100, 200, 300, 400]"
           :page-size="100"
-          layout="total, sizes, prev, pager, next, jumper"
+          :page-sizes="[100, 200, 300, 400]"
           :total="400"
-          @size-change="handleSizeChange"
+          layout="total, sizes, prev, pager, next, jumper"
           @current-change="handleCurrentChange"
+          @size-change="handleSizeChange"
         />
       </el-divider>
     </el-footer>
@@ -136,13 +136,14 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .tag-container {
+  align-items: center;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: center;
 }
+
 .tag-list {
   span {
     margin-left: 5px;
