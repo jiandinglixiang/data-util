@@ -11,13 +11,13 @@
       <el-row justify="space-between" type="flex">
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
           <el-form-item label="沉默天数大于等于:">
-            <el-input-number v-model="formInline.region" :max="10" :min="1" />
+            <el-input-number v-model="formInline.area" :max="10" :min="1" />
           </el-form-item>
           <el-form-item label="充值金额大于等于:">
-            <el-input-number v-model="formInline.region" :max="10" :min="1" />
+            <el-input-number v-model="formInline.area" :max="10" :min="1" />
           </el-form-item>
           <el-form-item>
-            <el-radio-group v-model="formInline.region">
+            <el-radio-group v-model="formInline.area">
               <el-radio-button label="沉默7天以上" />
               <el-radio-button label="沉默15天以上" />
               <el-radio-button label="沉默30天以上" />
@@ -121,7 +121,7 @@ export default {
       ],
       formInline: {
         user: '',
-        region: ''
+        area: ''
       }
     }
   },

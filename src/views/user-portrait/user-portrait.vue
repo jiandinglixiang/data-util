@@ -1,9 +1,9 @@
 <template>
   <el-container class="page-container">
     <el-main>
-      <div class="select-region">
+      <div class="select-area">
         <b>分群:</b>
-        <el-select v-model="formModel.region" placeholder="选择地区">
+        <el-select v-model="formModel.area" placeholder="选择地区">
           <el-option label="群1" value="shanghai" />
           <el-option label="群2" value="beijing" />
         </el-select>
@@ -23,7 +23,7 @@
           height="230px"
         />
       </div>
-      <div class="select-region">
+      <div class="select-area">
         <b>起止日期:</b>
         <el-date-picker
           v-model="formModel.interval"
@@ -292,7 +292,7 @@ export default {
   min-width: 863px;
 }
 
-.select-region {
+.select-area {
   margin-bottom: 30px;
 
   b {

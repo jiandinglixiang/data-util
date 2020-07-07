@@ -11,13 +11,14 @@ function resolve(dir) {
 
 const {
   NODE_ENV,
-  VUE_APP_BASE_API,
-  VUE_APP_BASE_ASSETS_PATH = '/'
+  VUE_APP_proxyUrl,
+  VUE_APP_publicPath,
+  VUE_APP_API_URL
 } = process.env
 
 // 配置: https://cli.vuejs.org/config/
 module.exports = {
-  publicPath: VUE_APP_BASE_ASSETS_PATH,
+  publicPath: VUE_APP_publicPath,
   outputDir: 'dist',
   assetsDir: '',
   lintOnSave: NODE_ENV === 'development',
@@ -30,8 +31,8 @@ module.exports = {
       errors: true
     },
     proxy: {
-      '/api': {
-        target: VUE_APP_BASE_API,
+      [VUE_APP_API_URL]: {
+        target: VUE_APP_proxyUrl,
         ws: true,
         changeOrigin: true
       }

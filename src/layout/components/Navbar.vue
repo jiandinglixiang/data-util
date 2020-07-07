@@ -27,11 +27,7 @@
     </div>
     <el-form :inline="true" label-width="50" class="status-form">
       <el-form-item label="地区">
-        <el-select
-          :value="region"
-          placeholder="选择地区"
-          @change="onChange('region', $event)"
-        >
+        <el-select :value="area" placeholder="选择地区" @change="onAreaChange">
           <el-option label="国内" value="mainlan" />
           <el-option label="国外" value="overseas" />
         </el-select>
@@ -40,12 +36,18 @@
         <el-select
           :value="project"
           placeholder="选择项目"
-          @change="onChange('project', $event)"
+          @change="onProjectChange"
         >
-          <el-option label="快应用" value="quickapp" />
-          <el-option label="繁体版" value="app_tw" />
-          <el-option label="英文版" value="app_en" />
-          <el-option label="越南版" value="app_vn" />
+          <el-option
+            v-if="area === 'mainlan'"
+            label="快应用"
+            value="quickapp"
+          />
+          <template v-else>
+            <el-option label="繁体版" value="app_tw" />
+            <el-option label="英文版" value="app_en" />
+            <el-option label="越南版" value="app_vn" />
+          </template>
         </el-select>
       </el-form-item>
     </el-form>
@@ -53,7 +55,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
@@ -62,16 +64,27 @@ export default {
     Breadcrumb,
     Hamburger
   },
+  data() {
+    const { area, project } = this.$store.state.project.currentDataPath
+    return {
+      area,
+      project
+    }
+  },
   computed: {
-    ...mapState({
-      project: stats => stats.project.project,
-      region: stats => stats.project.region
-    }),
     ...mapGetters(['sidebar', 'avatar'])
   },
   methods: {
-    onChange(key, value) {
-      this.$store.commit('project/CHANGE_PROJECT_TARGET', { [key]: value })
+    onAreaChange(value) {
+      this.project = ''
+      this.area = value
+    },
+    onProjectChange(value) {
+      this.project = value
+      this.$store.commit('project/CHANGE_PROJECT_TARGET', {
+        area: this.area,
+        project: this.project
+      })
     },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
